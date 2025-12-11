@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mural de Investigação - Caso Show</title>
+    <title>Mural de Investigação - Caso Show: CONTA INSTAGRAM PRIVADA</title>
     <style>
         * {
             margin: 0;
@@ -107,50 +107,63 @@
             border-radius: 4px;
         }
 
-        /* EVIDÊNCIA CENTRAL */
-        .evidence-central {
+        /* REVELAÇÃO FINAL */
+        .final-revelation {
             text-align: center;
             margin: 30px 0;
-            padding: 20px;
-            background: rgba(74, 122, 170, 0.2);
+            padding: 25px;
+            background: rgba(122, 74, 170, 0.3);
             border-radius: 15px;
-            border: 2px solid #4a7aaa;
+            border: 3px solid #7a4aaa;
         }
 
-        .evidence-title {
-            font-size: 1.8rem;
+        .revelation-title {
+            font-size: 2rem;
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .evidence-desc {
-            font-size: 1.1rem;
-            color: #d0d0f0;
+        .revelation-desc {
+            font-size: 1.2rem;
+            color: #e0d0f0;
             max-width: 800px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* MUDANÇA DE FOCO */
-        .focus-change {
+        /* CONTA INSTAGRAM CENTRAL */
+        .instagram-account {
             text-align: center;
             margin: 20px 0;
             padding: 20px;
-            background: rgba(74, 170, 74, 0.2);
+            background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45);
             border-radius: 15px;
-            border: 2px solid #4aaa4a;
+            border: 2px solid #ffffff;
+            color: white;
         }
 
-        .focus-title {
-            font-size: 1.5rem;
-            color: #ffffff;
+        .instagram-title {
+            font-size: 2.2rem;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
 
-        .focus-desc {
-            font-size: 1.1rem;
-            color: #d0f0d0;
-            max-width: 800px;
-            margin: 0 auto;
+        .followers-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .follower {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         /* BOARD - O MURAL */
@@ -215,43 +228,12 @@
             font-size: 1rem;
         }
 
-        .card-members {
-            background: rgba(58, 58, 106, 0.3);
+        .instagram-info {
+            background: rgba(131, 58, 180, 0.2);
             padding: 12px;
             border-radius: 8px;
             margin-top: 15px;
-        }
-
-        .member-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .member {
-            padding: 4px 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .member.in-video::before {
-            content: "🎥";
-            font-size: 0.8rem;
-        }
-
-        .member.post-author {
-            background: rgba(170, 74, 74, 0.3);
-            border: 1px solid #aa4a4a;
-        }
-
-        .member.cleared {
-            background: rgba(74, 170, 74, 0.3);
-            border: 1px solid #4aaa4a;
+            border-left: 4px solid #E1306C;
         }
 
         .card-tags {
@@ -268,26 +250,26 @@
             font-weight: 600;
         }
 
-        .tag-evidence { background: #4a4aaa; color: white; }
+        .tag-instagram { background: linear-gradient(to right, #833AB4, #E1306C); color: white; }
+        .tag-follower { background: #7a4aaa; color: white; }
         .tag-friend { background: #4aaa4a; color: white; }
         .tag-witness { background: #4aaa4a; color: white; }
         .tag-leader { background: #aa7a4a; color: white; }
-        .tag-connection { background: #7a4aaa; color: white; }
+        .tag-authority { background: #4a7aaa; color: white; }
         .tag-doubt { background: #aa4a7a; color: white; }
         .tag-video { background: #4a7aaa; color: white; }
-        .tag-source { background: #4aaa7a; color: white; }
-        .tag-suspect { background: #aa4a4a; color: white; }
 
-        /* CORES DOS CARDS POR CATEGORIA */
-        .card-suspect {
-            border-left: 6px solid #aa4a4a;
+        /* CORES DOS CARDS */
+        .card-instagram {
+            border-left: 6px solid #E1306C;
+            border-top: 6px solid #833AB4;
+        }
+
+        .card-follower {
+            border-left: 6px solid #7a4aaa;
         }
 
         .card-friend {
-            border-left: 6px solid #4aaa4a;
-        }
-
-        .card-witness {
             border-left: 6px solid #4aaa4a;
         }
 
@@ -296,38 +278,34 @@
         }
 
         .card-authority {
-            border-left: 6px solid #7a4aaa;
-        }
-
-        .card-evidence {
             border-left: 6px solid #4a7aaa;
-            border-top: 6px solid #4a7aaa;
         }
 
         /* POSIÇÕES INICIAIS DOS CARDS */
         #card-laysa {
             top: 100px;
             left: 400px;
-            border-left: 6px solid #4a7aaa;
-            border-top: 6px solid #4a7aaa;
+            border-left: 6px solid #E1306C;
+            border-top: 6px solid #833AB4;
             width: 320px;
         }
 
         #card-grupo {
             top: 350px;
             left: 200px;
+            border-left: 6px solid #7a4aaa;
         }
 
         #card-jheny {
             top: 100px;
             left: 150px;
-            border-left: 6px solid #4aaa4a;
+            border-left: 6px solid #7a4aaa;
         }
 
         #card-miguel {
             top: 100px;
             left: 800px;
-            border-left: 6px solid #4aaa7a;
+            border-left: 6px solid #7a4aaa;
         }
 
         #card-mauricio {
@@ -343,7 +321,7 @@
         #card-sede {
             top: 600px;
             left: 400px;
-            border-left: 6px solid #aa4a4a;
+            border-left: 6px solid #7a4aaa;
         }
 
         #card-pastor-local {
@@ -360,7 +338,7 @@
         .connection-line {
             position: absolute;
             height: 3px;
-            background-color: rgba(90, 90, 170, 0.7);
+            background-color: rgba(122, 74, 170, 0.7);
             transform-origin: 0 0;
             z-index: 5;
             pointer-events: none;
@@ -369,16 +347,11 @@
         .connection-line.dashed {
             background: repeating-linear-gradient(
                 to right,
-                rgba(90, 90, 170, 0.7) 0px,
-                rgba(90, 90, 170, 0.7) 10px,
+                rgba(122, 74, 170, 0.7) 0px,
+                rgba(122, 74, 170, 0.7) 10px,
                 transparent 10px,
                 transparent 20px
             );
-        }
-
-        .connection-line.thick {
-            height: 5px;
-            background-color: rgba(74, 122, 170, 0.9);
         }
 
         .connection-label {
@@ -403,9 +376,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
+            z-index: 1000;
         }
 
         .modal-content {
@@ -416,7 +387,10 @@
             padding: 30px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid #5a5aaa;
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             max-height: 85vh;
             overflow-y: auto;
         }
@@ -449,6 +423,10 @@
             justify-content: center;
         }
 
+        .close-modal:hover {
+            background: #cc5c5c;
+        }
+
         .modal-body {
             line-height: 1.7;
             font-size: 1.1rem;
@@ -466,142 +444,6 @@
             color: #a0a0d0;
             margin-bottom: 15px;
             font-size: 1.4rem;
-        }
-
-        .notes-section {
-            background: rgba(20, 20, 35, 0.8);
-            border: 1px solid #3a3a6a;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .note-item {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: rgba(58, 58, 106, 0.3);
-            border-radius: 6px;
-            border-left: 4px solid #4a7aaa;
-        }
-
-        .note-date {
-            font-size: 0.8rem;
-            color: #a0a0d0;
-            margin-bottom: 5px;
-        }
-
-        .modal-notes textarea {
-            width: 100%;
-            height: 120px;
-            background: rgba(20, 20, 35, 0.8);
-            border: 1px solid #3a3a6a;
-            border-radius: 8px;
-            padding: 15px;
-            color: #f0f0f0;
-            font-size: 1rem;
-            resize: vertical;
-            margin-bottom: 15px;
-        }
-
-        .modal-notes button {
-            background: linear-gradient(to right, #3a6a3a, #4a8a4a);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-right: 10px;
-        }
-
-        .modal-notes button:hover {
-            background: linear-gradient(to right, #4a8a4a, #5aaa5a);
-        }
-
-        .modal-notes button.delete-btn {
-            background: linear-gradient(to right, #6a3a3a, #8a4a4a);
-        }
-
-        .modal-notes button.delete-btn:hover {
-            background: linear-gradient(to right, #8a4a4a, #aa5a5a);
-        }
-
-        /* DATABASE INFO */
-        .db-status {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(26, 26, 46, 0.9);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #a0a0d0;
-            border: 1px solid #3a3a6a;
-            z-index: 1000;
-        }
-
-        /* TIMELINE */
-        .timeline-container {
-            margin-top: 40px;
-            padding: 25px;
-            background: rgba(20, 20, 35, 0.7);
-            border-radius: 15px;
-            border: 1px solid #3a3a6a;
-        }
-
-        .timeline-title {
-            font-size: 1.8rem;
-            color: #ffffff;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background: #5a5aaa;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background: rgba(58, 58, 106, 0.5);
-            border-radius: 10px;
-            border-left: 4px solid #5a5aaa;
-        }
-
-        .timeline-date {
-            font-weight: bold;
-            color: #a0a0d0;
-            margin-bottom: 10px;
         }
 
         /* FOOTER */
@@ -640,25 +482,9 @@
                 align-items: center;
             }
             
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .db-status {
-                bottom: 10px;
-                left: 10px;
-                right: 10px;
-                font-size: 0.8rem;
+            .followers-list {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -669,7 +495,7 @@
         <!-- CABEÇALHO -->
         <header>
             <h1><i class="fas fa-search"></i> MURAL DE INVESTIGAÇÃO</h1>
-            <p class="subtitle">Caso Show: O POST PÚBLICO - Quem transformou em caso?</p>
+            <p class="subtitle">Caso Show: CONTA DO INSTAGRAM PRIVADA - O caso final</p>
             
             <div class="investigation-tools">
                 <button class="tool-btn" id="btnToggleLines">
@@ -678,70 +504,63 @@
                 <button class="tool-btn" id="btnResetPositions">
                     <i class="fas fa-sync-alt"></i> Resetar Posições
                 </button>
-                <button class="tool-btn" id="btnViewAllNotes">
-                    <i class="fas fa-database"></i> Ver Todas Anotações
-                </button>
-                <button class="tool-btn" id="btnExportDB">
-                    <i class="fas fa-file-export"></i> Exportar Banco de Dados
-                </button>
             </div>
 
             <!-- LEGENDA -->
             <div class="legend">
                 <div class="legend-item">
-                    <div class="legend-color" style="background-color: #aa4a4a;"></div>
-                    <span>Ponto de Investigação</span>
+                    <div class="legend-color" style="background: linear-gradient(to right, #833AB4, #E1306C);"></div>
+                    <span>Conta Instagram Privada</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #7a4aaa;"></div>
+                    <span>Seguidor Autorizado</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-color" style="background-color: #4aaa4a;"></div>
-                    <span>Amiga/Testemunha</span>
+                    <span>Amiga</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-color" style="background-color: #aa7a4a;"></div>
                     <span>Líder</span>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #7a4aaa;"></div>
-                    <span>Autoridade</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #4a7aaa;"></div>
-                    <span>Evidência (Post)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #4aaa7a;"></div>
-                    <span>Testemunha</span>
-                </div>
             </div>
         </header>
 
-        <!-- MUDANÇA DE FOCO DA INVESTIGAÇÃO -->
-        <div class="focus-change">
-            <h2 class="focus-title"><i class="fas fa-exclamation-circle"></i> MUDANÇA NA INVESTIGAÇÃO</h2>
-            <p class="focus-desc">
-                <strong>JHENY NÃO É SUSPEITA</strong> - Ela é amiga do grupo, está afastada há tempo e não teria motivo.<br>
-                <strong>NOVA QUESTÃO:</strong> Quem na SEDE viu o post público e transformou isso em "caso"?
+        <!-- REVELAÇÃO FINAL -->
+        <div class="final-revelation">
+            <h2 class="revelation-title"><i class="fab fa-instagram"></i> VERDADE REVELADA</h2>
+            <p class="revelation-desc">
+                <strong>ERA UMA CONTA DO INSTAGRAM PRIVADA DA LAYSA</strong><br>
+                Jheny, Miguel e o povo da sede <strong>SEGUIAM</strong> essa conta.<br>
+                <strong>NÃO FOI VAZAMENTO</strong> - Todos tinham acesso AUTORIZADO.<br>
+                <strong>QUESTÃO FINAL:</strong> Quem na SEDE transformou conteúdo normal em "caso"?
             </p>
         </div>
 
-        <!-- EVIDÊNCIA CENTRAL -->
-        <div class="evidence-central">
-            <h2 class="evidence-title"><i class="fas fa-video"></i> EVIDÊNCIA CENTRAL</h2>
-            <p class="evidence-desc">
-                <strong>O POST FOI PÚBLICO</strong> - Postado por Laysa.<br>
-                Jheny (amiga) viu. Miguel (filho dos líderes) viu. Pessoal da Sede viu.<br>
-                <strong>NÃO FOI VAZAMENTO</strong> - Foi conteúdo público que alguém decidiu transformar em problema.
-            </p>
+        <!-- CONTA INSTAGRAM -->
+        <div class="instagram-account">
+            <h3 class="instagram-title">
+                <i class="fab fa-instagram"></i> @laysa_privado
+            </h3>
+            <p><strong>CONTA PRIVADA DO INSTAGRAM</strong> - Apenas seguidores aprovados veem os posts</p>
+            
+            <div class="followers-list">
+                <div class="follower">Grupo do Show (9 pessoas)</div>
+                <div class="follower">Jheny (amiga aprovada)</div>
+                <div class="follower">Miguel (seguidor aprovado)</div>
+                <div class="follower">Pessoal da Sede (seguidores)</div>
+            </div>
         </div>
 
         <!-- MURAL INTERATIVO -->
         <div class="board" id="investigationBoard">
-            <!-- LAYSA (AUTORA DO POST) - CENTRO -->
-            <div class="card card-evidence" id="card-laysa">
+            <!-- LAYSA (CONTA INSTAGRAM) -->
+            <div class="card card-instagram" id="card-laysa">
                 <div class="card-header">
                     <div>
                         <h3 class="card-title">Laysa</h3>
-                        <span class="card-subtitle">AUTORA DO POST/VÍDEO</span>
+                        <span class="card-subtitle">@laysa_privado (Instagram)</span>
                     </div>
                     <div class="card-actions">
                         <button class="card-btn btn-details" data-card="laysa">
@@ -750,24 +569,27 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <strong>POST PÚBLICO - NÃO FOI VAZAMENTO</strong><br>
-                    1. Postou vídeo do show (conteúdo normal)<br>
-                    2. Post era público - qualquer um podia ver<br>
-                    3. Não teve intenção de esconder nada<br>
-                    4. Mostrava Katia, Karina, Laysa e Milena
+                    <strong>CONTA PRIVADA DO INSTAGRAM</strong><br>
+                    1. Postou vídeo em conta PRIVADA<br>
+                    2. Apenas seguidores aprovados veem<br>
+                    3. Seguidores: amigos + conhecidos<br>
+                    4. Conteúdo normal entre seguidores
+                </div>
+                <div class="instagram-info">
+                    <strong>Seguidores aprovados:</strong> Grupo, Jheny, Miguel, Sede
                 </div>
                 <div class="card-tags">
-                    <span class="tag tag-source">Fonte Original</span>
-                    <span class="tag tag-video">Post Público</span>
+                    <span class="tag tag-instagram">Instagram Privado</span>
+                    <span class="tag tag-video">Postou Vídeo</span>
                 </div>
             </div>
 
-            <!-- GRUPO (TESTEMUNHAS) -->
-            <div class="card card-witness" id="card-grupo">
+            <!-- GRUPO DO SHOW (SEGUIDORES) -->
+            <div class="card card-follower" id="card-grupo">
                 <div class="card-header">
                     <div>
                         <h3 class="card-title">Grupo do Show</h3>
-                        <span class="card-subtitle">9 membros - 4 no vídeo</span>
+                        <span class="card-subtitle">SEGUIDORES DA CONTA</span>
                     </div>
                     <div class="card-actions">
                         <button class="card-btn btn-details" data-card="grupo">
@@ -776,34 +598,23 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    Estavam no show. Laysa postou vídeo público. Ninguém estava escondendo nada. Post era visível para todos.
+                    Todos os 9 membros seguem a conta privada da Laysa. Viram o post normalmente - era para seguidores.
                 </div>
-                <div class="card-members">
-                    <strong>Membros:</strong>
-                    <div class="member-list">
-                        <div class="member in-video post-author">Laysa 🎥 📱</div>
-                        <div class="member in-video">Katia 🎥</div>
-                        <div class="member in-video">Karina 🎥</div>
-                        <div class="member in-video">Milena 🎥</div>
-                        <div class="member">Rayane</div>
-                        <div class="member">Raiany</div>
-                        <div class="member">Nicolly</div>
-                        <div class="member">Samuel</div>
-                        <div class="member">Emanuel</div>
-                    </div>
+                <div class="instagram-info">
+                    <strong>Status:</strong> Seguidores aprovados da @laysa_privado
                 </div>
                 <div class="card-tags">
-                    <span class="tag tag-witness">Presentes</span>
+                    <span class="tag tag-follower">Seguidores</span>
                     <span class="tag tag-video">4 no vídeo</span>
                 </div>
             </div>
 
-            <!-- JHENY (AMIGA DO GRUPO) -->
-            <div class="card card-friend" id="card-jheny">
+            <!-- JHENY (SEGUIDORA) -->
+            <div class="card card-follower" id="card-jheny">
                 <div class="card-header">
                     <div>
                         <h3 class="card-title">Jheny</h3>
-                        <span class="card-subtitle">AMIGA DO GRUPO</span>
+                        <span class="card-subtitle">SEGUIDORA APROVADA</span>
                     </div>
                     <div class="card-actions">
                         <button class="card-btn btn-details" data-card="jheny">
@@ -812,25 +623,27 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <strong>NÃO É SUSPEITA - É AMIGA</strong><br>
-                    1. Amiga do grupo há tempo<br>
-                    2. Viu o post público de Laysa (como muitos)<br>
-                    3. Está afastada por outros motivos<br>
-                    4. Não teria motivo para criar caso<br>
-                    5. Filha do Pastor Local (contexto apenas)
+                    <strong>SEGUIDORA AUTORIZADA</strong><br>
+                    1. Segue a conta privada da Laysa<br>
+                    2. Acesso AUTORIZADO aos posts<br>
+                    3. Viu o vídeo normalmente<br>
+                    4. Amiga - seguidora aprovada
+                </div>
+                <div class="instagram-info">
+                    <strong>Instagram:</strong> Segue @laysa_privado
                 </div>
                 <div class="card-tags">
-                    <span class="tag tag-friend">Amiga do Grupo</span>
-                    <span class="tag tag-witness">Viu o Post</span>
+                    <span class="tag tag-follower">Seguidora</span>
+                    <span class="tag tag-friend">Amiga</span>
                 </div>
             </div>
 
-            <!-- MIGUEL (FILHO DOS LÍDERES) -->
-            <div class="card card-witness" id="card-miguel">
+            <!-- MIGUEL (SEGUIDOR) -->
+            <div class="card card-follower" id="card-miguel">
                 <div class="card-header">
                     <div>
                         <h3 class="card-title">Miguel</h3>
-                        <span class="card-subtitle">FILHO DOS LÍDERES</span>
+                        <span class="card-subtitle">SEGUIDOR APROVADO</span>
                     </div>
                     <div class="card-actions">
                         <button class="card-btn btn-details" data-card="miguel">
@@ -839,68 +652,27 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <strong>TESTEMUNHA IMPORTANTE</strong><br>
-                    1. Também viu o post público<br>
-                    2. Filho dos líderes (Rosa/Maurício?)<br>
-                    3. Pode ter comentado em casa<br>
-                    4. Link entre post e liderança?
+                    <strong>SEGUIDOR AUTORIZADO</strong><br>
+                    1. Segue a conta privada da Laysa<br>
+                    2. Acesso AUTORIZADO aos posts<br>
+                    3. Viu o vídeo normalmente<br>
+                    4. Filho dos líderes - seguidor aprovado
+                </div>
+                <div class="instagram-info">
+                    <strong>Instagram:</strong> Segue @laysa_privado
                 </div>
                 <div class="card-tags">
-                    <span class="tag tag-witness">Viu o Post</span>
-                    <span class="tag tag-connection">Família Líderes</span>
+                    <span class="tag tag-follower">Seguidor</span>
+                    <span class="tag tag-witness">Testemunha</span>
                 </div>
             </div>
 
-            <!-- MAURÍCIO (LÍDER) -->
-            <div class="card card-leader" id="card-mauricio">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">Maurício</h3>
-                        <span class="card-subtitle">Líder do Grupo</span>
-                    </div>
-                    <div class="card-actions">
-                        <button class="card-btn btn-details" data-card="mauricio">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    Líder. Já teve conflitos com o grupo. Pai do Miguel? Saberia do post através do filho? Não teria motivo para criar caso.
-                </div>
-                <div class="card-tags">
-                    <span class="tag tag-leader">Líder</span>
-                    <span class="tag tag-connection">Pai do Miguel?</span>
-                </div>
-            </div>
-
-            <!-- ROSA (LÍDER) -->
-            <div class="card card-leader" id="card-rosa">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">Rosa</h3>
-                        <span class="card-subtitle">Líder do Grupo</span>
-                    </div>
-                    <div class="card-actions">
-                        <button class="card-btn btn-details" data-card="rosa">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    Líder. Sempre busca parecer que está "tudo sob controle". Mãe do Miguel? Saberia do post pelo filho? Poderia ter levado à sede para "controlar narrativa"?
-                </div>
-                <div class="card-tags">
-                    <span class="tag tag-leader">Líder</span>
-                    <span class="tag tag-connection">Mãe do Miguel?</span>
-                </div>
-            </div>
-
-            <!-- SEDE (PONTO DE INVESTIGAÇÃO) -->
-            <div class="card card-suspect" id="card-sede">
+            <!-- SEDE (SEGUIDORES) -->
+            <div class="card card-follower" id="card-sede">
                 <div class="card-header">
                     <div>
                         <h3 class="card-title">Pessoal da Sede</h3>
-                        <span class="card-subtitle">QUEM TRANSFORMOU EM CASO?</span>
+                        <span class="card-subtitle">SEGUIDORES DA CONTA</span>
                     </div>
                     <div class="card-actions">
                         <button class="card-btn btn-details" data-card="sede">
@@ -909,15 +681,17 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <strong>PONTO CRÍTICO DA INVESTIGAÇÃO</strong><br>
-                    1. Viu o post público<br>
-                    2. Decidiu transformar em "caso"<br>
-                    3. Amplificou e criou fofoca<br>
-                    4. Alegou que "chegou ao presidente"<br>
-                    <strong>QUESTÃO:</strong> Quem específico na sede? Por que criar caso?
+                    <strong>SEGUIDORES AUTORIZADOS</strong><br>
+                    1. Seguem a conta privada da Laysa<br>
+                    2. Acesso AUTORIZADO aos posts<br>
+                    3. Viram o vídeo normalmente<br>
+                    4. <strong>QUESTÃO:</strong> Por que transformaram em "caso"?
+                </div>
+                <div class="instagram-info">
+                    <strong>Instagram:</strong> Seguem @laysa_privado
                 </div>
                 <div class="card-tags">
-                    <span class="tag tag-suspect">Ponto de Investigação</span>
+                    <span class="tag tag-follower">Seguidores</span>
                     <span class="tag tag-doubt">Motivação?</span>
                 </div>
             </div>
@@ -936,1066 +710,335 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    Já mentiu outras vezes. Disse que "chegou ao presidente". Como soube? Da sede? Da filha Jheny (que só viu post)? Ou inventou?
+                    Não segue a conta. Como soube? Da Sede? Da filha Jheny? Ou inventou? Credibilidade baixa.
+                </div>
+                <div class="instagram-info">
+                    <strong>Instagram:</strong> NÃO segue @laysa_privado
                 </div>
                 <div class="card-tags">
-                    <span class="tag tag-doubt">Credibilidade Baixa</span>
-                    <span class="tag tag-connection">Pai de Jheny</span>
-                </div>
-            </div>
-
-            <!-- PASTOR PRESIDENTE -->
-            <div class="card card-authority" id="card-pastor-presidente">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">Pastor Presidente</h3>
-                        <span class="card-subtitle">Liderança Máxima</span>
-                    </div>
-                    <div class="card-actions">
-                        <button class="card-btn btn-details" data-card="pastor-presidente">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    Não conhece o grupo. Provavelmente nunca soube. Pastor Local pode ter mentido sobre "chegar ao presidente" para parecer importante.
-                </div>
-                <div class="card-tags">
-                    <span class="tag tag-doubt">Provavelmente não soube</span>
-                    <span class="tag tag-connection">Usado na mentira</span>
-                </div>
-            </div>
-            
-            <!-- AS LINHAS DE CONEXÃO SERÃO INSERIDAS AQUI VIA JAVASCRIPT -->
-        </div>
-
-        <!-- ANÁLISE DA INVESTIGAÇÃO -->
-        <div class="timeline-container">
-            <h2 class="timeline-title"><i class="fas fa-user-secret"></i> NOVAS HIPÓTESES DA INVESTIGAÇÃO</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Hipótese 1 (Mais Provável)</div>
-                        <p><strong>Post Público (Laysa) → Visto por MUITOS → Sede (alguém específico) cria caso → Pastor Local mente sobre Presidente</strong><br>
-                        Alguém na sede viu o post normal e decidiu transformar em problema para gerar conflito/controle.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Hipótese 2</div>
-                        <p><strong>Post → Miguel viu → Contou aos pais (líderes) → Líderes levaram à sede para "controlar" → Sede amplificou</strong><br>
-                        Os líderes podem ter tentado gerenciar a situação mas perderam o controle.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Hipótese 3 (Política Interna)</div>
-                        <p><strong>Sede quer desestabilizar grupo/líderes → Usa post público como desculpa → Cria caso artificial → Pastor Local envolvido ou usado</strong><br>
-                        Conflito de poder dentro da igreja usando o grupo como peão.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Novas Perguntas-Chave</div>
-                        <p>1. <strong>QUEM ESPECÍFICO na sede viu o post primeiro?</strong><br>
-                        2. <strong>POR QUE transformar post público em caso?</strong> (Motivação real)<br>
-                        3. O Pastor Local mentiu sozinho ou foi orientado?<br>
-                        4. Há conflito de poder sede vs. grupo/líderes?</p>
-                    </div>
+                    <span class="tag tag-doubt">Não tinha acesso</span>
+                    <span class="tag tag-authority">Pai de Jheny</span>
                 </div>
             </div>
         </div>
 
-        <!-- MODAL PARA DETALHES -->
-        <div class="modal" id="detailsModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="modalCardTitle">Detalhes</h2>
-                    <button class="close-modal" id="closeModal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-section">
-                        <h3>Descrição Completa</h3>
-                        <p id="modalCardDescription">Descrição completa do envolvido.</p>
-                    </div>
-                    <div class="modal-section">
-                        <h3>Relações e Conexões</h3>
-                        <ul id="modalCardConnections"></ul>
-                    </div>
-                    <div class="modal-section">
-                        <h3>Anotações Salvas</h3>
-                        <div class="notes-section" id="savedNotes"></div>
-                    </div>
-                    <div class="modal-section modal-notes">
-                        <h3>Adicionar Nova Anotação</h3>
-                        <textarea id="noteTextarea" placeholder="Digite sua anotação aqui..."></textarea>
-                        <div>
-                            <button id="saveNoteBtn">Salvar Anotação</button>
-                            <button id="deleteAllNotesBtn" class="delete-btn">Apagar Todas Anotações</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- CONCLUSÃO FINAL -->
+        <div class="final-revelation" style="background: rgba(74, 170, 74, 0.3); border-color: #4aaa4a;">
+            <h2 class="revelation-title"><i class="fas fa-check-circle"></i> CONCLUSÃO DA INVESTIGAÇÃO</h2>
+            <p class="revelation-desc" style="color: #d0f0d0;">
+                <strong>NÃO HOUVE VAZAMENTO - FOI ACESSO AUTORIZADO</strong><br>
+                1. Conta Instagram privada da Laysa<br>
+                2. Jheny, Miguel e Sede eram SEGUIDORES APROVADOS<br>
+                3. Todos viram o conteúdo LEGITIMAMENTE<br>
+                4. <strong>PROBLEMA REAL:</strong> Alguém na SEDE transformou conteúdo normal em "caso"<br>
+                5. Pastor Local provavelmente mentiu sobre "chegar ao presidente"
+            </p>
         </div>
 
-        <!-- MODAL PARA TODAS AS ANOTAÇÕES -->
-        <div class="modal" id="allNotesModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title"><i class="fas fa-database"></i> Todas as Anotações da Investigação</h2>
-                    <button class="close-modal" id="closeAllNotesModal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-section">
-                        <h3>Anotações por Pessoa</h3>
-                        <div id="allNotesList"></div>
-                    </div>
-                    <div class="modal-section">
-                        <button id="exportNotesBtn" class="tool-btn" style="width: 100%;">
-                            <i class="fas fa-download"></i> Exportar Todas as Anotações
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- STATUS DO BANCO DE DADOS -->
-        <div class="db-status" id="dbStatus">
-            <i class="fas fa-database"></i> Banco de dados: <span id="dbStatusText">Carregando...</span>
-        </div>
-
-        <!-- RODAPÉ -->
+        <!-- FOOTER -->
         <footer>
-            <p><i class="fas fa-shield-alt"></i> Mural de Investigação - Caso Show | Foco: QUEM NA SEDE CRIOU O CASO?</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">Jheny não é suspeita - é amiga do grupo. Investigação focada na Sede.</p>
+            <p><i class="fas fa-shield-alt"></i> Caso encerrado: Não foi vazamento - foi acesso autorizado a conta privada</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Conta Instagram privada @laysa_privado - Seguidores aprovados viram conteúdo normalmente</p>
         </footer>
     </div>
 
     <script>
-        // ================================
-        // BANCO DE DADOS INDEXEDDB
-        // ================================
-        class InvestigationDB {
-            constructor() {
-                this.db = null;
-                this.dbName = 'InvestigationCaseShow';
-                this.dbVersion = 1;
-                this.initializeDB();
+        // DADOS DOS CARDS - CONTA INSTAGRAM
+        const cardDetails = {
+            'laysa': {
+                title: "Laysa - @laysa_privado (Instagram)",
+                description: "Conta PRIVADA do Instagram. Apenas seguidores aprovados podem ver os posts. Postou vídeo do show normalmente, como fazem todos os jovens. Configurações de privacidade: 'Apenas seguidores'. Jheny, Miguel e pessoal da sede eram seguidores aprovados - viram o conteúdo legitimamente.",
+                connections: [
+                    "Conta Instagram PRIVADA",
+                    "Apenas seguidores aprovados veem",
+                    "Postou vídeo normalmente",
+                    "Configuração: 'Apenas seguidores'",
+                    "NÃO houve violação de privacidade"
+                ]
+            },
+            'grupo': {
+                title: "Grupo do Show - Seguidores",
+                description: "Todos os 9 membros seguem a conta privada da Laysa no Instagram. Eram seguidores aprovados. Viram o vídeo normalmente no feed. Conteúdo destinado especificamente a eles (e outros seguidores). Nenhum acesso ilegítimo.",
+                connections: [
+                    "Seguidores aprovados da @laysa_privado",
+                    "Viram vídeo no feed normal",
+                    "Acesso 100% autorizado",
+                    "Conteúdo destinado a eles",
+                    "Relação normal de amigos no Instagram"
+                ]
+            },
+            'jheny': {
+                title: "Jheny - Seguidora Aprovada",
+                description: "SEGUIDORA APROVADA da conta privada da Laysa. Seguia a conta há tempos (era amiga). Quando Laysa postou o vídeo, Jheny viu normalmente no seu feed do Instagram. Acesso TOTALMENTE LEGÍTIMO. Não 'invadiu' nada - era seguidora autorizada.",
+                connections: [
+                    "Seguidora aprovada da conta",
+                    "Viu vídeo no feed normalmente",
+                    "Acesso 100% legítimo",
+                    "Amiga - seguidora há tempo",
+                    "NÃO configurou 'vazamento'"
+                ]
+            },
+            'miguel': {
+                title: "Miguel - Seguidor Aprovado",
+                description: "SEGUIDOR APROVADO da conta privada da Laysa. Também seguia a conta. Viu o vídeo normalmente quando apareceu no feed. Acesso legítimo. Filho dos líderes, mas isso é irrelevante para o acesso - era seguidor autorizado independentemente.",
+                connections: [
+                    "Seguidor aprovado da conta",
+                    "Viu vídeo no feed normalmente",
+                    "Acesso 100% legítimo",
+                    "Não 'vazou' - apenas viu",
+                    "Testemunha do acesso normal"
+                ]
+            },
+            'sede': {
+                title: "Pessoal da Sede - Seguidores",
+                description: "SEGUIDORES APROVADOS da conta privada da Laysa. Também seguiam a conta. Viram o vídeo normalmente. Acesso LEGÍTIMO. A QUESTÃO CRÍTICA: Por que transformaram conteúdo normal (que eles próprios tinham acesso autorizado) em 'caso'? Possível motivação: controle, poder, ou má interpretação.",
+                connections: [
+                    "Seguidores aprovados da conta",
+                    "Acesso 100% legítimo ao vídeo",
+                    "QUESTÃO: Por que criaram caso?",
+                    "Viram o mesmo que todos os seguidores",
+                    "Transformaram normal em problema"
+                ]
+            },
+            'pastor-local': {
+                title: "Pastor Local - Não Seguia",
+                description: "NÃO SEGUE a conta privada da Laysa. Não tinha acesso legítimo. Como soube do vídeo? Possibilidades: 1) Sede contou (e distorceu), 2) Filha Jheny comentou casualmente, 3) Inventou para parecer importante. Histórico de mentiras diminui credibilidade. Provavelmente usou informação para auto-engrandecimento.",
+                connections: [
+                    "NÃO seguia a conta privada",
+                    "Não tinha acesso legítimo",
+                    "Soube através de terceiros",
+                    "Provavelmente mentiu sobre presidente",
+                    "Credibilidade questionável"
+                ]
             }
+        };
 
-            initializeDB() {
-                const request = indexedDB.open(this.dbName, this.dbVersion);
+        // CONEXÕES - TODOS SEGUEM A MESMA CONTA
+        const connections = [
+            { from: 'card-laysa', to: 'card-jheny', label: 'Segue no Instagram', dashed: false },
+            { from: 'card-laysa', to: 'card-miguel', label: 'Segue no Instagram', dashed: false },
+            { from: 'card-laysa', to: 'card-sede', label: 'Segue no Instagram', dashed: false },
+            { from: 'card-laysa', to: 'card-grupo', label: 'Todos seguem', dashed: false },
+            { from: 'card-sede', to: 'card-pastor-local', label: 'Informou?', dashed: true },
+            { from: 'card-jheny', to: 'card-pastor-local', label: 'Pai/Filha', dashed: false }
+        ];
 
-                request.onerror = (event) => {
-                    console.error('Erro ao abrir banco de dados:', event.target.error);
-                    this.updateStatus('Erro ao carregar', 'error');
-                };
+        // VARIÁVEIS GLOBAIS
+        let linesVisible = true;
+        let draggedCard = null;
 
-                request.onsuccess = (event) => {
-                    this.db = event.target.result;
-                    console.log('Banco de dados carregado com sucesso');
-                    this.updateStatus('Conectado', 'success');
-                    
-                    // Carregar anotações existentes
-                    this.loadAllNotes();
-                };
+        // ELEMENTOS DO DOM
+        const board = document.getElementById('investigationBoard');
+        const modal = document.getElementById('detailsModal');
+        const modalTitle = document.getElementById('modalCardTitle');
+        const modalDescription = document.getElementById('modalCardDescription');
+        const modalConnections = document.getElementById('modalCardConnections');
+        const closeModalBtn = document.getElementById('closeModal');
+        const btnToggleLines = document.getElementById('btnToggleLines');
+        const btnResetPositions = document.getElementById('btnResetPositions');
 
-                request.onupgradeneeded = (event) => {
-                    const db = event.target.result;
-                    
-                    // Criar object store para anotações
-                    if (!db.objectStoreNames.contains('notes')) {
-                        const notesStore = db.createObjectStore('notes', { keyPath: 'id', autoIncrement: true });
-                        notesStore.createIndex('cardId', 'cardId', { unique: false });
-                        notesStore.createIndex('timestamp', 'timestamp', { unique: false });
-                        console.log('Object store "notes" criado');
-                    }
+        // INICIALIZAÇÃO
+        function init() {
+            drawConnectionLines();
+            setupEventListeners();
+            makeCardsDraggable();
+        }
 
-                    // Criar object store para posições dos cards
-                    if (!db.objectStoreNames.contains('cardPositions')) {
-                        const positionsStore = db.createObjectStore('cardPositions', { keyPath: 'cardId' });
-                        console.log('Object store "cardPositions" criado');
-                    }
-                };
-            }
-
-            updateStatus(text, type = 'info') {
-                const statusEl = document.getElementById('dbStatusText');
-                statusEl.textContent = text;
+        // DESENHAR LINHAS DE CONEXÃO
+        function drawConnectionLines() {
+            document.querySelectorAll('.connection-line, .connection-label').forEach(el => el.remove());
+            
+            connections.forEach(conn => {
+                const fromCard = document.getElementById(conn.from);
+                const toCard = document.getElementById(conn.to);
                 
-                const colors = {
-                    success: '#4aaa4a',
-                    error: '#aa4a4a',
-                    info: '#4a7aaa'
-                };
+                if (!fromCard || !toCard) return;
                 
-                statusEl.style.color = colors[type] || colors.info;
-            }
+                const fromRect = fromCard.getBoundingClientRect();
+                const toRect = toCard.getBoundingClientRect();
+                const boardRect = board.getBoundingClientRect();
+                
+                const fromX = fromRect.left + fromRect.width / 2 - boardRect.left;
+                const fromY = fromRect.top + fromRect.height / 2 - boardRect.top;
+                const toX = toRect.left + toRect.width / 2 - boardRect.left;
+                const toY = toRect.top + toRect.height / 2 - boardRect.top;
+                
+                const distance = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
+                const angle = Math.atan2(toY - fromY, toX - fromX) * (180 / Math.PI);
+                
+                // Criar linha
+                const line = document.createElement('div');
+                line.className = `connection-line ${conn.dashed ? 'dashed' : ''}`;
+                line.style.width = `${distance}px`;
+                line.style.left = `${fromX}px`;
+                line.style.top = `${fromY}px`;
+                line.style.transform = `rotate(${angle}deg)`;
+                line.style.opacity = linesVisible ? '0.7' : '0';
+                line.title = conn.label;
+                
+                board.appendChild(line);
+                
+                // Adicionar label
+                const labelX = fromX + (toX - fromX) / 2;
+                const labelY = fromY + (toY - fromY) / 2;
+                
+                const label = document.createElement('div');
+                label.className = 'connection-label';
+                label.textContent = conn.label;
+                label.style.left = `${labelX}px`;
+                label.style.top = `${labelY}px`;
+                label.style.opacity = linesVisible ? '1' : '0';
+                label.style.transform = `translate(-50%, -50%)`;
+                
+                board.appendChild(label);
+            });
+        }
 
-            // ========== OPERAÇÕES DE ANOTAÇÕES ==========
-            async saveNote(cardId, noteText) {
-                if (!this.db || !noteText.trim()) return false;
+        // CONFIGURAR EVENT LISTENERS
+        function setupEventListeners() {
+            // Botões de detalhes dos cards
+            document.querySelectorAll('.btn-details').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const cardId = this.getAttribute('data-card');
+                    openCardModal(cardId);
+                });
+            });
 
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['notes'], 'readwrite');
-                    const store = transaction.objectStore('notes');
+            // Cards clicáveis
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.card-btn')) {
+                        const cardId = this.id.replace('card-', '');
+                        openCardModal(cardId);
+                    }
+                });
+            });
+
+            // Fechar modal
+            closeModalBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Fechar modal clicando fora
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Botões de controle
+            btnToggleLines.addEventListener('click', toggleLines);
+            btnResetPositions.addEventListener('click', resetCardPositions);
+
+            // Redesenhar linhas ao redimensionar
+            window.addEventListener('resize', drawConnectionLines);
+        }
+
+        // ABRIR MODAL COM DETALHES
+        function openCardModal(cardId) {
+            const details = cardDetails[cardId];
+            if (!details) return;
+
+            modalTitle.textContent = details.title;
+            modalDescription.textContent = details.description;
+            
+            modalConnections.innerHTML = '';
+            details.connections.forEach(conn => {
+                const li = document.createElement('li');
+                li.textContent = conn;
+                li.style.marginBottom = '8px';
+                li.style.padding = '8px';
+                li.style.background = 'rgba(58, 58, 106, 0.3)';
+                li.style.borderRadius = '5px';
+                modalConnections.appendChild(li);
+            });
+
+            modal.style.display = 'block';
+        }
+
+        // TORNAR CARDS ARRASTÁVEIS
+        function makeCardsDraggable() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousedown', startDrag);
+            });
+
+            function startDrag(e) {
+                draggedCard = this;
+                
+                const shiftX = e.clientX - draggedCard.getBoundingClientRect().left;
+                const shiftY = e.clientY - draggedCard.getBoundingClientRect().top;
+                
+                function moveAt(pageX, pageY) {
+                    const boardRect = board.getBoundingClientRect();
                     
-                    const note = {
-                        cardId: cardId,
-                        text: noteText.trim(),
-                        timestamp: new Date().toISOString(),
-                        dateDisplay: new Date().toLocaleString('pt-BR')
-                    };
-
-                    const request = store.add(note);
-
-                    request.onsuccess = () => {
-                        console.log('Anotação salva:', note);
-                        this.updateStatus('Anotação salva', 'success');
-                        resolve(true);
-                    };
-
-                    request.onerror = (event) => {
-                        console.error('Erro ao salvar anotação:', event.target.error);
-                        this.updateStatus('Erro ao salvar', 'error');
-                        resolve(false);
-                    };
-                });
-            }
-
-            async getNotesByCard(cardId) {
-                if (!this.db) return [];
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['notes'], 'readonly');
-                    const store = transaction.objectStore('notes');
-                    const index = store.index('cardId');
-                    const request = index.getAll(cardId);
-
-                    request.onsuccess = () => {
-                        const notes = request.result.sort((a, b) => 
-                            new Date(b.timestamp) - new Date(a.timestamp)
-                        );
-                        resolve(notes);
-                    };
-
-                    request.onerror = () => {
-                        console.error('Erro ao buscar anotações');
-                        resolve([]);
-                    };
-                });
-            }
-
-            async getAllNotes() {
-                if (!this.db) return [];
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['notes'], 'readonly');
-                    const store = transaction.objectStore('notes');
-                    const request = store.getAll();
-
-                    request.onsuccess = () => {
-                        const notes = request.result.sort((a, b) => 
-                            new Date(b.timestamp) - new Date(a.timestamp)
-                        );
-                        resolve(notes);
-                    };
-
-                    request.onerror = () => {
-                        console.error('Erro ao buscar todas as anotações');
-                        resolve([]);
-                    };
-                });
-            }
-
-            async deleteAllNotes() {
-                if (!this.db) return false;
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['notes'], 'readwrite');
-                    const store = transaction.objectStore('notes');
-                    const request = store.clear();
-
-                    request.onsuccess = () => {
-                        console.log('Todas as anotações apagadas');
-                        this.updateStatus('Todas anotações apagadas', 'success');
-                        resolve(true);
-                    };
-
-                    request.onerror = (event) => {
-                        console.error('Erro ao apagar anotações:', event.target.error);
-                        this.updateStatus('Erro ao apagar', 'error');
-                        resolve(false);
-                    };
-                });
-            }
-
-            async deleteNotesByCard(cardId) {
-                if (!this.db) return false;
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['notes'], 'readwrite');
-                    const store = transaction.objectStore('notes');
-                    const index = store.index('cardId');
+                    let newX = pageX - shiftX - boardRect.left;
+                    let newY = pageY - shiftY - boardRect.top;
                     
-                    const getAllRequest = index.getAllKeys(cardId);
+                    newX = Math.max(10, Math.min(newX, boardRect.width - draggedCard.offsetWidth - 10));
+                    newY = Math.max(10, Math.min(newY, boardRect.height - draggedCard.offsetHeight - 10));
                     
-                    getAllRequest.onsuccess = () => {
-                        const keys = getAllRequest.result;
-                        if (keys.length === 0) {
-                            resolve(true);
-                            return;
-                        }
-
-                        let deletedCount = 0;
-                        keys.forEach(key => {
-                            const deleteRequest = store.delete(key);
-                            deleteRequest.onsuccess = () => {
-                                deletedCount++;
-                                if (deletedCount === keys.length) {
-                                    console.log(`Anotações de ${cardId} apagadas`);
-                                    this.updateStatus('Anotações apagadas', 'success');
-                                    resolve(true);
-                                }
-                            };
-                            deleteRequest.onerror = () => {
-                                console.error('Erro ao apagar anotação');
-                                resolve(false);
-                            };
-                        });
-                    };
-
-                    getAllRequest.onerror = () => {
-                        console.error('Erro ao buscar chaves para apagar');
-                        resolve(false);
-                    };
-                });
-            }
-
-            // ========== OPERAÇÕES DE POSIÇÕES ==========
-            async saveCardPosition(cardId, left, top) {
-                if (!this.db) return false;
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['cardPositions'], 'readwrite');
-                    const store = transaction.objectStore('cardPositions');
-                    
-                    const position = {
-                        cardId: cardId,
-                        left: left,
-                        top: top,
-                        timestamp: new Date().toISOString()
-                    };
-
-                    const request = store.put(position);
-
-                    request.onsuccess = () => {
-                        resolve(true);
-                    };
-
-                    request.onerror = (event) => {
-                        console.error('Erro ao salvar posição:', event.target.error);
-                        resolve(false);
-                    };
-                });
-            }
-
-            async getAllCardPositions() {
-                if (!this.db) return {};
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['cardPositions'], 'readonly');
-                    const store = transaction.objectStore('cardPositions');
-                    const request = store.getAll();
-
-                    request.onsuccess = () => {
-                        const positions = {};
-                        request.result.forEach(pos => {
-                            positions[pos.cardId] = { left: pos.left, top: pos.top };
-                        });
-                        resolve(positions);
-                    };
-
-                    request.onerror = () => {
-                        console.error('Erro ao buscar posições');
-                        resolve({});
-                    };
-                });
-            }
-
-            async clearAllPositions() {
-                if (!this.db) return false;
-
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['cardPositions'], 'readwrite');
-                    const store = transaction.objectStore('cardPositions');
-                    const request = store.clear();
-
-                    request.onsuccess = () => {
-                        console.log('Posições apagadas');
-                        resolve(true);
-                    };
-
-                    request.onerror = () => {
-                        console.error('Erro ao apagar posições');
-                        resolve(false);
-                    };
-                });
-            }
-
-            // ========== EXPORT/IMPORT ==========
-            async exportAllData() {
-                if (!this.db) return null;
-
-                const [notes, positions] = await Promise.all([
-                    this.getAllNotes(),
-                    this.getAllCardPositions()
-                ]);
-
-                return {
-                    metadata: {
-                        exportDate: new Date().toISOString(),
-                        case: "Caso Show - O Post Público",
-                        version: "2.0",
-                        focus: "Quem na Sede criou o caso?"
-                    },
-                    notes: notes,
-                    positions: positions
-                };
+                    draggedCard.style.left = `${newX}px`;
+                    draggedCard.style.top = `${newY}px`;
+                }
+                
+                function onMouseMove(e) {
+                    moveAt(e.clientX, e.clientY);
+                }
+                
+                document.addEventListener('mousemove', onMouseMove);
+                
+                function onMouseUp() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    drawConnectionLines();
+                }
+                
+                document.addEventListener('mouseup', onMouseUp, { once: true });
             }
         }
 
-        // ================================
-        // APLICAÇÃO PRINCIPAL
-        // ================================
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar banco de dados
-            const investigationDB = new InvestigationDB();
+        // ALTERNAR VISIBILIDADE DAS LINHAS
+        function toggleLines() {
+            linesVisible = !linesVisible;
+            document.querySelectorAll('.connection-line, .connection-label').forEach(el => {
+                el.style.opacity = linesVisible ? (el.classList.contains('connection-line') ? '0.7' : '1') : '0';
+            });
             
-            // Configurações iniciais
-            const currentDate = new Date();
-            document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('pt-BR');
-            
-            // Dados das conexões ATUALIZADOS
-            const connections = [
-                // Laysa é o centro - post público
-                { from: 'card-laysa', to: 'card-jheny', label: 'Jheny viu o post', dashed: false },
-                { from: 'card-laysa', to: 'card-miguel', label: 'Miguel viu o post', dashed: false },
-                { from: 'card-laysa', to: 'card-sede', label: 'Sede viu o post', dashed: false, thick: true },
-                
-                // Conexões familiares
-                { from: 'card-miguel', to: 'card-mauricio', label: 'Pai?', dashed: true },
-                { from: 'card-miguel', to: 'card-rosa', label: 'Mãe?', dashed: true },
-                { from: 'card-jheny', to: 'card-pastor-local', label: 'Pai', dashed: false },
-                
-                // Conexões de grupo
-                { from: 'card-grupo', to: 'card-laysa', label: 'Laysa é do grupo', dashed: false },
-                { from: 'card-grupo', to: 'card-mauricio', label: 'Líder', dashed: false },
-                { from: 'card-grupo', to: 'card-rosa', label: 'Líder', dashed: false },
-                
-                // Cadeia do caso (hipótese)
-                { from: 'card-sede', to: 'card-pastor-local', label: 'Informou Pastor?', dashed: true, thick: true },
-                { from: 'card-pastor-local', to: 'card-pastor-presidente', label: 'Alega ter informado', dashed: true }
-            ];
-            
-            // Dados detalhados para o modal ATUALIZADOS
-            const cardDetails = {
-                'laysa': {
-                    title: "Laysa - Autora do Post",
-                    description: "Postou um vídeo público do show. Não foi um 'vazamento' - era conteúdo normal e visível para todos seus contatos. Mostrava Katia, Karina, Laysa e Milena no show. Ela não teve intenção de esconder nada - apenas compartilhou um momento do grupo.",
-                    connections: [
-                        "Membro do grupo do show",
-                        "Postou vídeo PUBLICAMENTE",
-                        "Não escondia que grupo foi ao show",
-                        "Qualquer um nos contatos podia ver",
-                        "Não é fonte de 'vazamento' - é fonte de informação pública"
-                    ]
-                },
-                'grupo': {
-                    title: "Grupo do Show",
-                    description: "9 membros no total, 4 aparecem no vídeo (Katia, Karina, Laysa, Milena). Laysa postou o vídeo publicamente. O grupo não estava escondendo que foi ao show - o post prova isso. Ninguém do grupo teria motivo para 'vazar' algo que já era público.",
-                    connections: [
-                        "9 membros, 4 no vídeo",
-                        "Laysa postou vídeo público",
-                        "Grupo não escondia atividade",
-                        "Post era visível para contatos",
-                        "Relação normal de amigos compartilhando momentos"
-                    ]
-                },
-                'jheny': {
-                    title: "Jheny - Amiga do Grupo (NÃO SUSPEITA)",
-                    description: "AMIGA DO GRUPO. Viu o post público de Laysa como qualquer outro contato. Está afastada do grupo há tempo por outros motivos pessoais. É filha do Pastor Local, mas isso é apenas contexto familiar. NÃO TERIA MOTIVO para criar caso - é amiga do grupo. Seu afastamento é coincidência ou por motivos não relacionados.",
-                    connections: [
-                        "Amiga do grupo (não inimiga)",
-                        "Viu post público (como muitos)",
-                        "Filha do Pastor Local (apenas contexto)",
-                        "Afastada por motivos pessoais",
-                        "NÃO TERIA MOTIVO para criar problema"
-                    ]
-                },
-                'miguel': {
-                    title: "Miguel - Filho dos Líderes",
-                    description: "Filho dos líderes (Rosa e/ou Maurício?). Também viu o post público de Laysa. Pode ter comentado sobre o post em casa com os pais. Pode ser o elo entre o post público e os líderes tomarem conhecimento. Testemunha importante para entender como a informação circulou.",
-                    connections: [
-                        "Filho dos líderes (Rosa/Maurício?)",
-                        "Viu o post público",
-                        "Pode ter comentado com os pais",
-                        "Elo possível entre post e liderança",
-                        "Testemunha chave da circulação da informação"
-                    ]
-                },
-                'mauricio': {
-                    title: "Maurício (Líder)",
-                    description: "Líder do grupo. Já teve conflitos com o grupo. Pode ser pai do Miguel. Se for, pode ter sabido do post através do filho. Não teria motivo para transformar post público em caso - criaria problema para seu próprio grupo. Poderia ter levado à sede para 'controlar danos' se achou que poderia ser mal interpretado.",
-                    connections: [
-                        "Líder do grupo",
-                        "Possível pai do Miguel",
-                        "Saberia do post pelo filho",
-                        "Não teria motivo para criar caso",
-                        "Poderia tentar 'controlar' situação"
-                    ]
-                },
-                'rosa': {
-                    title: "Rosa (Líder)",
-                    description: "Líder. Sempre busca parecer que está 'tudo sob controle'. Pode ser mãe do Miguel. Se for, saberia do post através do filho. Pode ter levado à sede para 'controlar narrativa' antecipadamente, mas sem intenção maliciosa - apenas para gerenciar possível má interpretação.",
-                    connections: [
-                        "Líder preocupada com controle",
-                        "Possível mãe do Miguel",
-                        "Saberia do post pelo filho",
-                        "Poderia tentar gerenciar antecipadamente",
-                        "Motivação: controle, não dano"
-                    ]
-                },
-                'sede': {
-                    title: "Pessoal da Sede - PONTO DE INVESTIGAÇÃO",
-                    description: "QUEM ESPECÍFICO NA SEDE CRIOU O CASO? Viram o post público. Decidiram transformar conteúdo normal em 'caso'. Amplificaram e criaram fofoca. Motivações possíveis: 1) Controle sobre grupo/líderes, 2) Conflito de poder interno, 3) Funcionário problemático, 4) Interpretação excessivamente rígida. INVESTIGAR: Quem exatamente? Por que criar problema onde não existia?",
-                    connections: [
-                        "Viu post PÚBLICO",
-                        "TRANSFORMOU em 'caso'",
-                        "Amplificou desproporcionalmente",
-                        "Criou fofoca interna",
-                        "MOTIVAÇÃO REAL É A QUESTÃO CHAVE"
-                    ]
-                },
-                'pastor-local': {
-                    title: "Pastor Local (Pai de Jheny)",
-                    description: "Já mentiu outras vezes. Disse que 'chegou ao presidente'. Como soube? Possibilidades: 1) Sede contou a ele, 2) Filha Jheny comentou sobre post normal, 3) Inventou para parecer importante. Credibilidade baixa. Pode estar sendo usado pela sede ou pode estar agindo por conta para aumentar sua importância.",
-                    connections: [
-                        "Pai de Jheny (amiga do grupo)",
-                        "Histórico de mentiras",
-                        "Alega ter informado presidente (não confirmado)",
-                        "Pode estar sendo manipulado pela sede",
-                        "Pode estar mentindo para auto-importância"
-                    ]
-                },
-                'pastor-presidente': {
-                    title: "Pastor Presidente",
-                    description: "Não conhece o grupo. Provavelmente NUNCA soube do 'caso'. O Pastor Local provavelmente mentiu sobre 'ter chegado ao presidente' para dar peso à situação ou para parecer importante. Se a sede realmente quisesse envolver o presidente, teriam canais diretos - não passariam pelo Pastor Local.",
-                    connections: [
-                        "Não conhece o grupo",
-                        "Provavelmente nunca foi informado",
-                        "Pastor Local provavelmente mentiu",
-                        "Usado para dar peso falso ao 'caso'",
-                        "Vítima da narrativa falsa"
-                    ]
-                }
+            btnToggleLines.innerHTML = linesVisible 
+                ? '<i class="fas fa-project-diagram"></i> Esconder Conexões' 
+                : '<i class="fas fa-project-diagram"></i> Mostrar Conexões';
+        }
+
+        // RESETAR POSIÇÕES DOS CARDS
+        function resetCardPositions() {
+            const defaultPositions = {
+                'card-laysa': { left: '400px', top: '100px' },
+                'card-grupo': { left: '200px', top: '350px' },
+                'card-jheny': { left: '150px', top: '100px' },
+                'card-miguel': { left: '800px', top: '100px' },
+                'card-mauricio': { left: '550px', top: '350px' },
+                'card-rosa': { left: '850px', top: '350px' },
+                'card-sede': { left: '400px', top: '600px' },
+                'card-pastor-local': { left: '150px', top: '600px' },
+                'card-pastor-presidente': { left: '800px', top: '600px' }
             };
 
-            // VARIÁVEIS GLOBAIS
-            let linesVisible = true;
-            let draggedCard = null;
-            let currentCardId = null;
-
-            // ELEMENTOS DO DOM
-            const board = document.getElementById('investigationBoard');
-            const modal = document.getElementById('detailsModal');
-            const allNotesModal = document.getElementById('allNotesModal');
-            const modalTitle = document.getElementById('modalCardTitle');
-            const modalDescription = document.getElementById('modalCardDescription');
-            const modalConnections = document.getElementById('modalCardConnections');
-            const savedNotesEl = document.getElementById('savedNotes');
-            const noteTextarea = document.getElementById('noteTextarea');
-            const saveNoteBtn = document.getElementById('saveNoteBtn');
-            const deleteAllNotesBtn = document.getElementById('deleteAllNotesBtn');
-            const closeModalBtn = document.getElementById('closeModal');
-            const closeAllNotesModalBtn = document.getElementById('closeAllNotesModal');
-            const btnToggleLines = document.getElementById('btnToggleLines');
-            const btnResetPositions = document.getElementById('btnResetPositions');
-            const btnViewAllNotes = document.getElementById('btnViewAllNotes');
-            const btnExportDB = document.getElementById('btnExportDB');
-            const allNotesList = document.getElementById('allNotesList');
-            const exportNotesBtn = document.getElementById('exportNotesBtn');
-
-            // INICIALIZAÇÃO
-            async function init() {
-                drawConnectionLines();
-                setupEventListeners();
-                makeCardsDraggable();
-                await loadSavedPositions();
-            }
-
-            // DESENHAR LINHAS DE CONEXÃO
-            function drawConnectionLines() {
-                document.querySelectorAll('.connection-line, .connection-label').forEach(el => el.remove());
-                
-                connections.forEach(conn => {
-                    const fromCard = document.getElementById(conn.from);
-                    const toCard = document.getElementById(conn.to);
-                    
-                    if (!fromCard || !toCard) return;
-                    
-                    const fromRect = fromCard.getBoundingClientRect();
-                    const toRect = toCard.getBoundingClientRect();
-                    const boardRect = board.getBoundingClientRect();
-                    
-                    const fromX = fromRect.left + fromRect.width / 2 - boardRect.left;
-                    const fromY = fromRect.top + fromRect.height / 2 - boardRect.top;
-                    const toX = toRect.left + toRect.width / 2 - boardRect.left;
-                    const toY = toRect.top + toRect.height / 2 - boardRect.top;
-                    
-                    const distance = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
-                    const angle = Math.atan2(toY - fromY, toX - fromX) * (180 / Math.PI);
-                    
-                    // Criar linha
-                    const line = document.createElement('div');
-                    line.className = `connection-line ${conn.dashed ? 'dashed' : ''} ${conn.thick ? 'thick' : ''}`;
-                    line.style.width = `${distance}px`;
-                    line.style.left = `${fromX}px`;
-                    line.style.top = `${fromY}px`;
-                    line.style.transform = `rotate(${angle}deg)`;
-                    line.style.opacity = linesVisible ? '0.7' : '0';
-                    line.title = conn.label;
-                    
-                    board.appendChild(line);
-                    
-                    // Adicionar label no meio da linha
-                    const labelX = fromX + (toX - fromX) / 2;
-                    const labelY = fromY + (toY - fromY) / 2;
-                    
-                    const label = document.createElement('div');
-                    label.className = 'connection-label';
-                    label.textContent = conn.label;
-                    label.style.left = `${labelX}px`;
-                    label.style.top = `${labelY}px`;
-                    label.style.opacity = linesVisible ? '1' : '0';
-                    label.style.transform = `translate(-50%, -50%)`;
-                    
-                    board.appendChild(label);
-                });
-            }
-
-            // CONFIGURAR EVENT LISTENERS
-            function setupEventListeners() {
-                // Botões de detalhes dos cards
-                document.querySelectorAll('.btn-details').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const cardId = this.getAttribute('data-card');
-                        openCardModal(cardId);
-                    });
-                });
-
-                // Cards clicáveis
-                document.querySelectorAll('.card').forEach(card => {
-                    card.addEventListener('click', function(e) {
-                        if (!e.target.closest('.card-btn')) {
-                            const cardId = this.id.replace('card-', '');
-                            openCardModal(cardId);
-                        }
-                    });
-                });
-
-                // Fechar modais
-                closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
-                closeAllNotesModalBtn.addEventListener('click', () => allNotesModal.style.display = 'none');
-                
-                window.addEventListener('click', function(e) {
-                    if (e.target === modal) modal.style.display = 'none';
-                    if (e.target === allNotesModal) allNotesModal.style.display = 'none';
-                });
-
-                // Salvar anotação
-                saveNoteBtn.addEventListener('click', saveNote);
-
-                // Apagar anotações
-                deleteAllNotesBtn.addEventListener('click', deleteAllNotesForCurrentCard);
-
-                // Botões de controle
-                btnToggleLines.addEventListener('click', toggleLines);
-                btnResetPositions.addEventListener('click', resetCardPositions);
-                btnViewAllNotes.addEventListener('click', viewAllNotes);
-                btnExportDB.addEventListener('click', exportDatabase);
-                exportNotesBtn.addEventListener('click', exportAllNotes);
-
-                // Redesenhar linhas ao redimensionar
-                window.addEventListener('resize', drawConnectionLines);
-            }
-
-            // ABRIR MODAL COM DETALHES
-            async function openCardModal(cardId) {
-                const details = cardDetails[cardId];
-                if (!details) return;
-
-                currentCardId = cardId;
-                modalTitle.textContent = details.title;
-                modalDescription.textContent = details.description;
-                
-                modalConnections.innerHTML = '';
-                details.connections.forEach(conn => {
-                    const li = document.createElement('li');
-                    li.textContent = conn;
-                    li.style.marginBottom = '8px';
-                    li.style.padding = '8px';
-                    li.style.background = 'rgba(58, 58, 106, 0.3)';
-                    li.style.borderRadius = '5px';
-                    modalConnections.appendChild(li);
-                });
-
-                // Carregar anotações do banco de dados
-                await loadNotesForCard(cardId);
-                
-                noteTextarea.value = '';
-                modal.style.display = 'flex';
-            }
-
-            // CARREGAR ANOTAÇÕES DO BANCO DE DADOS
-            async function loadNotesForCard(cardId) {
-                if (!investigationDB.db) return;
-
-                const notes = await investigationDB.getNotesByCard(cardId);
-                savedNotesEl.innerHTML = '';
-
-                if (notes.length === 0) {
-                    savedNotesEl.innerHTML = '<p style="color: #a0a0d0; text-align: center;">Nenhuma anotação salva ainda.</p>';
-                    return;
+            Object.keys(defaultPositions).forEach(cardId => {
+                const card = document.getElementById(cardId);
+                if (card) {
+                    card.style.left = defaultPositions[cardId].left;
+                    card.style.top = defaultPositions[cardId].top;
                 }
+            });
 
-                notes.forEach(note => {
-                    const noteEl = document.createElement('div');
-                    noteEl.className = 'note-item';
-                    noteEl.innerHTML = `
-                        <div class="note-date">${note.dateDisplay}</div>
-                        <div>${note.text}</div>
-                    `;
-                    savedNotesEl.appendChild(noteEl);
-                });
-            }
+            drawConnectionLines();
+        }
 
-            // SALVAR ANOTAÇÃO NO BANCO DE DADOS
-            async function saveNote() {
-                if (!currentCardId || !noteTextarea.value.trim()) {
-                    alert('Digite uma anotação antes de salvar!');
-                    return;
-                }
-
-                const success = await investigationDB.saveNote(currentCardId, noteTextarea.value.trim());
-                
-                if (success) {
-                    // Recarregar anotações
-                    await loadNotesForCard(currentCardId);
-                    noteTextarea.value = '';
-                    
-                    // Feedback visual
-                    const originalText = saveNoteBtn.textContent;
-                    saveNoteBtn.textContent = 'Salvo!';
-                    saveNoteBtn.style.background = '#2a9d8f';
-                    
-                    setTimeout(() => {
-                        saveNoteBtn.textContent = 'Salvar Anotação';
-                        saveNoteBtn.style.background = '';
-                    }, 1500);
-                }
-            }
-
-            // APAGAR ANOTAÇÕES DO CARD ATUAL
-            async function deleteAllNotesForCurrentCard() {
-                if (!currentCardId || !confirm('Tem certeza que deseja apagar TODAS as anotações deste card?')) {
-                    return;
-                }
-
-                const success = await investigationDB.deleteNotesByCard(currentCardId);
-                
-                if (success) {
-                    await loadNotesForCard(currentCardId);
-                    
-                    // Feedback visual
-                    const originalText = deleteAllNotesBtn.textContent;
-                    deleteAllNotesBtn.textContent = 'Apagadas!';
-                    deleteAllNotesBtn.style.background = '#8a4a4a';
-                    
-                    setTimeout(() => {
-                        deleteAllNotesBtn.textContent = 'Apagar Todas Anotações';
-                        deleteAllNotesBtn.style.background = '';
-                    }, 1500);
-                }
-            }
-
-            // VER TODAS AS ANOTAÇÕES
-            async function viewAllNotes() {
-                if (!investigationDB.db) {
-                    alert('Banco de dados ainda não carregou. Aguarde alguns segundos.');
-                    return;
-                }
-
-                const allNotes = await investigationDB.getAllNotes();
-                allNotesList.innerHTML = '';
-
-                if (allNotes.length === 0) {
-                    allNotesList.innerHTML = '<p style="color: #a0a0d0; text-align: center;">Nenhuma anotação salva ainda.</p>';
-                } else {
-                    // Agrupar por cardId
-                    const groupedNotes = {};
-                    
-                    allNotes.forEach(note => {
-                        if (!groupedNotes[note.cardId]) {
-                            groupedNotes[note.cardId] = [];
-                        }
-                        groupedNotes[note.cardId].push(note);
-                    });
-
-                    // Criar HTML para cada grupo
-                    Object.entries(groupedNotes).forEach(([cardId, notes]) => {
-                        const cardName = getCardDisplayName(cardId);
-                        const section = document.createElement('div');
-                        section.style.marginBottom = '25px';
-                        section.innerHTML = `
-                            <h4 style="color: #ffffff; margin-bottom: 10px; border-bottom: 1px solid #3a3a6a; padding-bottom: 5px;">
-                                ${cardName} (${notes.length} anotações)
-                            </h4>
-                        `;
-
-                        notes.forEach(note => {
-                            const noteEl = document.createElement('div');
-                            noteEl.className = 'note-item';
-                            noteEl.style.marginBottom = '10px';
-                            noteEl.innerHTML = `
-                                <div class="note-date">${note.dateDisplay}</div>
-                                <div>${note.text}</div>
-                            `;
-                            section.appendChild(noteEl);
-                        });
-
-                        allNotesList.appendChild(section);
-                    });
-                }
-
-                allNotesModal.style.display = 'flex';
-            }
-
-            // EXPORTAR TODAS AS ANOTAÇÕES
-            async function exportAllNotes() {
-                if (!investigationDB.db) return;
-
-                const allNotes = await investigationDB.getAllNotes();
-                
-                if (allNotes.length === 0) {
-                    alert('Não há anotações para exportar.');
-                    return;
-                }
-
-                const exportData = {
-                    metadata: {
-                        exportDate: new Date().toISOString(),
-                        case: "Caso Show - O Post Público",
-                        totalNotes: allNotes.length,
-                        focus: "Jheny não é suspeita - Foco na Sede"
-                    },
-                    notes: allNotes
-                };
-
-                const dataStr = JSON.stringify(exportData, null, 2);
-                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-                
-                const exportFileDefaultName = `anotacoes_investigacao_${new Date().toISOString().split('T')[0]}.json`;
-                const linkElement = document.createElement('a');
-                linkElement.setAttribute('href', dataUri);
-                linkElement.setAttribute('download', exportFileDefaultName);
-                linkElement.click();
-            }
-
-            // EXPORTAR BANCO DE DADOS COMPLETO
-            async function exportDatabase() {
-                if (!investigationDB.db) {
-                    alert('Banco de dados ainda não carregou.');
-                    return;
-                }
-
-                const data = await investigationDB.exportAllData();
-                
-                if (!data) {
-                    alert('Erro ao exportar dados.');
-                    return;
-                }
-
-                const dataStr = JSON.stringify(data, null, 2);
-                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-                
-                const exportFileDefaultName = `backup_investigacao_${new Date().toISOString().split('T')[0]}.json`;
-                const linkElement = document.createElement('a');
-                linkElement.setAttribute('href', dataUri);
-                linkElement.setAttribute('download', exportFileDefaultName);
-                linkElement.click();
-                
-                // Feedback
-                investigationDB.updateStatus('Backup exportado', 'success');
-            }
-
-            // TORNAR CARDS ARRASTÁVEIS
-            function makeCardsDraggable() {
-                const cards = document.querySelectorAll('.card');
-                
-                cards.forEach(card => {
-                    card.addEventListener('mousedown', startDrag);
-                    card.addEventListener('touchstart', startDragTouch, { passive: false });
-                });
-
-                function startDrag(e) {
-                    e.preventDefault();
-                    draggedCard = this;
-                    
-                    const shiftX = e.clientX - draggedCard.getBoundingClientRect().left;
-                    const shiftY = e.clientY - draggedCard.getBoundingClientRect().top;
-                    
-                    function moveAt(pageX, pageY) {
-                        const boardRect = board.getBoundingClientRect();
-                        
-                        let newX = pageX - shiftX - boardRect.left;
-                        let newY = pageY - shiftY - boardRect.top;
-                        
-                        newX = Math.max(10, Math.min(newX, boardRect.width - draggedCard.offsetWidth - 10));
-                        newY = Math.max(10, Math.min(newY, boardRect.height - draggedCard.offsetHeight - 10));
-                        
-                        draggedCard.style.left = `${newX}px`;
-                        draggedCard.style.top = `${newY}px`;
-                    }
-                    
-                    function onMouseMove(e) {
-                        moveAt(e.clientX, e.clientY);
-                    }
-                    
-                    function onTouchMove(e) {
-                        const touch = e.touches[0];
-                        moveAt(touch.clientX, touch.clientY);
-                    }
-                    
-                    document.addEventListener('mousemove', onMouseMove);
-                    document.addEventListener('touchmove', onTouchMove, { passive: false });
-                    
-                    function onMouseUp() {
-                        document.removeEventListener('mousemove', onMouseMove);
-                        document.removeEventListener('mouseup', onMouseUp);
-                        document.removeEventListener('touchmove', onTouchMove);
-                        document.removeEventListener('touchend', onTouchEnd);
-                        
-                        drawConnectionLines();
-                        saveCardPosition(draggedCard.id, draggedCard.style.left, draggedCard.style.top);
-                    }
-                    
-                    function onTouchEnd() {
-                        onMouseUp();
-                    }
-                    
-                    document.addEventListener('mouseup', onMouseUp, { once: true });
-                    document.addEventListener('touchend', onTouchEnd, { once: true });
-                }
-                
-                function startDragTouch(e) {
-                    e.preventDefault();
-                    startDrag.call(this, e.touches[0]);
-                }
-            }
-
-            // SALVAR POSIÇÃO DO CARD NO BANCO DE DADOS
-            async function saveCardPosition(cardId, left, top) {
-                if (!investigationDB.db) return;
-                
-                await investigationDB.saveCardPosition(cardId, left, top);
-            }
-
-            // CARREGAR POSIÇÕES SALVAS
-            async function loadSavedPositions() {
-                if (!investigationDB.db) {
-                    // Tentar novamente em 1 segundo se o banco ainda não carregou
-                    setTimeout(loadSavedPositions, 1000);
-                    return;
-                }
-
-                const positions = await investigationDB.getAllCardPositions();
-                
-                Object.keys(positions).forEach(cardId => {
-                    const card = document.getElementById(cardId);
-                    if (card && positions[cardId]) {
-                        card.style.left = positions[cardId].left;
-                        card.style.top = positions[cardId].top;
-                    }
-                });
-                
-                setTimeout(drawConnectionLines, 100);
-            }
-
-            // ALTERNAR VISIBILIDADE DAS LINHAS
-            function toggleLines() {
-                linesVisible = !linesVisible;
-                document.querySelectorAll('.connection-line, .connection-label').forEach(el => {
-                    el.style.opacity = linesVisible ? (el.classList.contains('connection-line') ? '0.7' : '1') : '0';
-                });
-                
-                btnToggleLines.innerHTML = linesVisible 
-                    ? '<i class="fas fa-project-diagram"></i> Esconder Conexões' 
-                    : '<i class="fas fa-project-diagram"></i> Mostrar Conexões';
-            }
-
-            // RESETAR POSIÇÕES DOS CARDS
-            async function resetCardPositions() {
-                if (!confirm('Resetar todas as posições para o padrão?')) return;
-
-                const defaultPositions = {
-                    'card-laysa': { left: '400px', top: '100px' },
-                    'card-grupo': { left: '200px', top: '350px' },
-                    'card-jheny': { left: '150px', top: '100px' },
-                    'card-miguel': { left: '800px', top: '100px' },
-                    'card-mauricio': { left: '550px', top: '350px' },
-                    'card-rosa': { left: '850px', top: '350px' },
-                    'card-sede': { left: '400px', top: '600px' },
-                    'card-pastor-local': { left: '150px', top: '600px' },
-                    'card-pastor-presidente': { left: '800px', top: '600px' }
-                };
-
-                Object.keys(defaultPositions).forEach(cardId => {
-                    const card = document.getElementById(cardId);
-                    if (card) {
-                        card.style.left = defaultPositions[cardId].left;
-                        card.style.top = defaultPositions[cardId].top;
-                        saveCardPosition(cardId, defaultPositions[cardId].left, defaultPositions[cardId].top);
-                    }
-                });
-
-                await investigationDB.clearAllPositions();
-                drawConnectionLines();
-                
-                investigationDB.updateStatus('Posições resetadas', 'success');
-            }
-
-            // FUNÇÃO AUXILIAR PARA NOMES DOS CARDS
-            function getCardDisplayName(cardId) {
-                const names = {
-                    'laysa': 'Laysa (Autora do Post)',
-                    'grupo': 'Grupo do Show',
-                    'jheny': 'Jheny (Amiga do Grupo)',
-                    'miguel': 'Miguel (Filho dos Líderes)',
-                    'mauricio': 'Maurício (Líder)',
-                    'rosa': 'Rosa (Líder)',
-                    'sede': 'Pessoal da Sede (Ponto de Investigação)',
-                    'pastor-local': 'Pastor Local',
-                    'pastor-presidente': 'Pastor Presidente'
-                };
-                return names[cardId] || cardId;
-            }
-
-            // INICIALIZAR
-            init();
-        });
+        // INICIALIZAR
+        init();
     </script>
 </body>
 </html>
